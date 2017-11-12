@@ -18,7 +18,7 @@ def generate_token(sender,instance=None,created=False,**kwargs):
         token.save()
         path = os.path.join(IMAGES_DIR_PATH)
         if not os.path.exists(path):
-            os.chdir(path)
+            os.chdir('images')
             os.mkdir(str(token.key))
 
 
