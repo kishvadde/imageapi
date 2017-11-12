@@ -1,0 +1,68 @@
+{% load static %}
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block head_title %}Image API{% endblock %}</title>
+
+    <script src="https://use.fontawesome.com/5704885d9f.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- Static navbar -->
+<nav class="navbar navbar-inverse navbar-static-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">ImageAPI</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+
+            <ul class="nav navbar-nav navbar-right">
+                {% if request.user.is_authenticated %}
+                 <li> <a href="{% url 'api:get_api_key' %}">api key</a> </li>
+                <li> <a href="#">{{request.user}}</a> </li>
+                    <li><a href="{% url 'account_logout' %}"><i class="fa fa-power-off" aria-hidden="true"></i> Logout</a></li>
+                {% else %}
+                    <li><a href="{% url 'account_signup' %}">Signup</a></li>
+                {% endif %}
+            </ul>
+            {% if not request.user.is_authenticated and not "/accounts/login" in request.get_full_path %}
+                <form class='navbar-form navbar-right' method='POST' action='{% url "account_login" %}'>
+                    {% csrf_token %}
+                    <div class='form-group'>
+                        <input type='text' class='form-control' name='login' placeholder='Username' />
+                    </div>
+                    <div class='form-group'>
+                        <input type='password' class='form-control' name='password' placeholder='Password' />
+                    </div>
+                    <button type='submit' class='btn btn-default'>Login</button>
+                </form>
+            {% endif %}
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+
+<div class="container">
+    {% block content %}
+
+    {% endblock %}
+</div>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>
