@@ -4,6 +4,7 @@ defusedxml==0.5.0
 Django==1.11.7
 django-allauth==0.34.0
 django-bootstrap==0.2.4
+django-bootstrap-form==3.3
 django-crispy-forms==1.7.0
 djangorestframework==3.7.3
 idna==2.6
