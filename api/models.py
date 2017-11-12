@@ -16,9 +16,10 @@ def generate_token(sender,instance=None,created=False,**kwargs):
     if created and isinstance(instance,User):
         token = Token.objects.create(user=instance)
         token.save()
-        path = os.path.join(IMAGES_DIR_PATH,str(token.key))
+        path = os.path.join(IMAGES_DIR_PATH)
         if not os.path.exists(path):
-            os.mkdir(path)
+            os.chdir(path)
+            os.mkdir(str(token.key))
 
 
 
