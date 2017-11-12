@@ -25,7 +25,7 @@ SECRET_KEY = '6nvw+70_2zfe%adyk2&3q=o)=h31hr*ww-fvcc_da^eg5%om5v'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['imageapi-app.appspot.com','57914b17.ngrok.io','127.0.0.1']
+ALLOWED_HOSTS = ['imageapi-app.herokuapp.com','57914b17.ngrok.io','127.0.0.1']
 
 
 # Application definition
@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'crispy_forms',
-    'bootstrap',
+    'bootstrapform',
 
     #internal apps
     'api',
@@ -147,7 +147,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 STATIC_URL = '/static/'
-STATIC_DIRS = [
-    os.path.join(BASE_DIR,'static')
-]
+# STATIC_DIRS = [
+#     os.path.join(BASE_DIR,'static')
+# ]
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_URL = '/media/'
+
+
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
+
