@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'crispy_forms',
     'bootstrapform',
+    'storages',
 
     #internal apps
     'api',
