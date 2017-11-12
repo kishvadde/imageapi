@@ -1,5 +1,7 @@
-# imageapi
-Image REST API 
+# Image REST API
+
+## Images are stored in file system and no meta data is stored in database. Only user information and Tokens are stored in DB
+
 
 
 ### NOTE: Currently  auth token (api key) should be obtained at http://127.0.0.1:8000/api/get-api-key
