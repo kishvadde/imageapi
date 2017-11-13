@@ -2,7 +2,7 @@
 
 ## Images are stored in file system and no meta data is stored in database. Only user information and Tokens are stored in DB
 
-
+### To run the code locally, in settings.py file set BASE_URL = 'http://127.0.0.1:8000'
 
 ### NOTE: Currently  auth token (api key) should be obtained at http://127.0.0.1:8000/api/get-api-key
 ### Every request should include authentication token in header. And token can be obtained logging into 
